@@ -1,6 +1,6 @@
-const faker = require('faker');
-const colors = require('colors/safe');
-const { db, Employee } = require('./index.js');
+const faker = require("faker");
+const colors = require("colors/safe");
+const { db, Employee } = require("./index.js");
 
 // Adjust this number to create more/less employees
 const TOTAL_EMPLOYEES = 325;
@@ -14,30 +14,30 @@ const generateSingleEmployee = () => {
   return { firstName, lastName, email, title };
 };
 
-const generateEmployees = numEmployees => {
+const generateEmployees = (numEmployees) => {
   return Array(numEmployees)
-    .fill('')
+    .fill("")
     .map(() => generateSingleEmployee());
 };
 
-const createEmployees = numEmployees => {
+const createEmployees = (numEmployees) => {
   const allEmployees = generateEmployees(numEmployees);
   // bulkCreate takes an array of objects and creates them all at once
   return Employee.bulkCreate(allEmployees);
 };
 
-const seed = numEmployees => {
+const seed = (numEmployees) => {
   db.sync({ force: true })
     .then(() => {
-      console.log(colors.america('seeding employees...'));
+      console.log(colors.america("seeding employees..."));
       return createEmployees(numEmployees);
     })
     .then(() => {
-      console.log(colors.rainbow('seeding complete'));
+      console.log(colors.rainbow("seeding complete"));
       db.close();
     })
-    .catch(e => {
-      console.error('seeding error', e);
+    .catch((e) => {
+      console.error("seeding error", e);
       db.close();
     });
 };
