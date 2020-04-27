@@ -70,6 +70,7 @@ tbody tr:nth-child(even) {
   justify-content: space-evenly;
   padding: 0 0.5em;
   margin-top: 20px;
+
   min-width: 50%;
 }
 
@@ -79,6 +80,9 @@ tbody tr:nth-child(even) {
   text-align: center;
   line-height: 2em;
   text-align: center;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
 }
 
 .active-page-link {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getEmployees } from "./store";
 
-class Home extends Component {
+class Employee extends Component {
   constructor() {
     super();
   }
@@ -21,15 +20,7 @@ class Home extends Component {
   }
 
   render() {
-    const { employees, count, match } = this.props;
-    const totalPages = Math.ceil(count / 50);
-    const pages = new Array(totalPages).fill("").map((_, idx) => {
-      return {
-        idx,
-        text: idx + 1,
-      };
-    });
-    const currPage = match.params.pageNum;
+    const { employees } = this.props;
     return (
       <div className="main-container">
         <h1>ACME Pager</h1>
@@ -57,38 +48,6 @@ class Home extends Component {
             </tbody>
           </table>
         </div>
-        <nav className="page-nav">
-          <Link
-            to={
-              parseInt(currPage) - 1 >= 0 ? `/${currPage - 1}` : `/${currPage}`
-            }
-          >
-            Previous
-          </Link>
-          {pages.map((page) => {
-            console.log(page);
-            return (
-              <Link
-                key={page.idx}
-                to={`/${page.idx}`}
-                className={
-                  parseInt(currPage) === page.idx ? "active-page-link" : ""
-                }
-              >
-                {page.text}
-              </Link>
-            );
-          })}
-          <Link
-            to={
-              parseInt(currPage) < pages.length - 1
-                ? `/${parseInt(currPage) + 1}`
-                : `/${currPage}`
-            }
-          >
-            Next
-          </Link>
-        </nav>
       </div>
     );
   }
@@ -97,7 +56,6 @@ class Home extends Component {
 const mapStateToProps = ({ employees }) => {
   return {
     employees: employees.rows,
-    count: employees.count,
   };
 };
 
@@ -107,4 +65,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Employee);
