@@ -22,7 +22,7 @@ const reducer = combineReducers({
 
 const store = createStore(
   reducer,
-  applyMiddleware(thunks, createLogger({ collpased: true }))
+  applyMiddleware(thunks, createLogger({ collapsed: true }))
 );
 
 const _getEmployees = (employees) => ({ type: GET_EMPLOYEES, employees });

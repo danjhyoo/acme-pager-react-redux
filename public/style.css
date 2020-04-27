@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 800px;
+  margin: auto;
+  padding-top: 2em;
+}
+
+.employee-table-container table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid lavender;
+}
+
+.employee-table-container thead {
+  background-color: lavender;
+}
+
+.employee-table-container thead tr {
+  position: relative;
+  display: block;
+}
+
+.employee-table-container tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}
+
+.employee-table-container th,
+td {
+  text-align: left;
+  padding: 0.25em;
+}
+
+.employee-table-container td:nth-child(1),
+th:nth-child(1),
+td:nth-child(2),
+th:nth-child(2) {
+  min-width: 125px;
+}
+
+.employee-table-container td:nth-child(3),
+th:nth-child(3) {
+  min-width: 300px;
+}
+
+.employee-table-container td:nth-child(4),
+th:nth-child(4) {
+  width: 250px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.page-nav {
+  display: flex;
+  flex-direction: row;
+  border: 3px solid lavender;
+  border-radius: 1em;
+  justify-content: space-evenly;
+  padding: 0 0.5em;
+  margin-top: 20px;
+  min-width: 50%;
+}
+
+.page-nav a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  line-height: 2em;
+  text-align: center;
+}
+
+.active-page-link {
+  background-color: lavender;
+  border: 1px solid lavender;
+  border-radius: 1rem;
+}

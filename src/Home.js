@@ -31,39 +31,33 @@ class Home extends Component {
     });
     const currPage = match.params.pageNum;
     return (
-      <div>
-        <h1>The Acme Pager</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <b>First Name</b>
-              </th>
-              <th>
-                <b>Last Name</b>
-              </th>
-              <th>
-                <b>Email</b>
-              </th>
-              <th>
-                <b>Title</b>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {employees.map((employee) => {
-              return (
-                <tr key={employee.id}>
-                  <td>{employee.firstName}</td>
-                  <td>{employee.lastName}</td>
-                  <td>{employee.email}</td>
-                  <td>{employee.title}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <nav>
+      <div className="main-container">
+        <h1>ACME Pager</h1>
+        <div className="employee-table-container">
+          <table className="employee-table">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employees.map((employee) => {
+                return (
+                  <tr key={employee.id}>
+                    <td>{employee.firstName}</td>
+                    <td>{employee.lastName}</td>
+                    <td>{employee.email}</td>
+                    <td>{employee.title}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <nav className="page-nav">
           <Link
             to={
               parseInt(currPage) - 1 >= 0 ? `/${currPage - 1}` : `/${currPage}`
@@ -72,8 +66,15 @@ class Home extends Component {
             Previous
           </Link>
           {pages.map((page) => {
+            console.log(page);
             return (
-              <Link key={page.idx} to={`/${page.idx}`}>
+              <Link
+                key={page.idx}
+                to={`/${page.idx}`}
+                className={
+                  parseInt(currPage) === page.idx ? "active-page-link" : ""
+                }
+              >
                 {page.text}
               </Link>
             );
